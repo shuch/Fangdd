@@ -26,12 +26,11 @@ const styles = StyleSheet.create({
   section: {
     borderTopWidth: 1,
     borderColor: '#eee',
-    marginHorizontal: 15,
   },
   sectionTitle: {
     flexDirection: 'row',
-    width: '100%',
     marginTop: 20,
+    marginHorizontal: 15,
   },
   title: {
     flex: 1,
@@ -51,6 +50,7 @@ const styles = StyleSheet.create({
   iconRight: {
     width: 7,
     height: 12,
+    marginLeft: 5,
   },
 });
 

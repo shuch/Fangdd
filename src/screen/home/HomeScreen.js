@@ -5,6 +5,11 @@ import screen from '../../common/screen';
 import HomeMenu from './HomeMenu';
 import Promotion from './Promotion';
 import HotLoupan from './HotLoupan';
+import HotESF from './HotESF';
+import SwipeBanner from './SwipeBanner';
+import HotAgents from './HotAgents';
+import RecommendList from './RecommendList';
+import VerticalItem from '../../component/common/VerticalItem';
 
 class HomeScreen extends Component {
   static navigationOptions = () => ({
@@ -40,15 +45,24 @@ class HomeScreen extends Component {
         <HomeMenu />
         <Promotion />
         <HotLoupan />
+        <HotESF />
+        <SwipeBanner />
+        {/* <HotAgents /> */}
+        <RecommendList />
       </View>
     );
   }
   render() {
+    const recommendList = [
+      { key: '1' },
+      { key: '2' },
+      { key: '3' },
+    ]
     return (
       <View style={styles.container}>
         <FlatList
-          data={[{key: 'a'}, {key: 'b'}]}
-          renderItem={({item}) => <Text>{item.key}</Text>}
+          data={recommendList}
+          renderItem={({item}) => <VerticalItem key={item.key}/> }
           ListHeaderComponent={this.renderHeader}
         />
       </View>
@@ -58,10 +72,10 @@ class HomeScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     // justifyContent: 'center',
-    alignItems: 'flex-start',
-    backgroundColor: '#FAFAFA'
+    // alignItems: 'center',
+    backgroundColor: '#FAFAFA',
   },
   location: {
     flexDirection: 'row',
@@ -108,7 +122,7 @@ const styles = StyleSheet.create({
   },
   header: {
     margin: 0,
-    alignItems: 'flex-start',
+    // alignItems: 'flex-start',
   }
   
 });

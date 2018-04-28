@@ -16,7 +16,7 @@ class HotLoupan extends Component {
       <Section more title={'热卖新盘'}>
         <HorizontalList>
           {
-            list.map(item => <HorizontalItem key={item.id} data={item} />)
+            list.map(item => <HorizontalItem key={item.id} data={item} type={'xf'} />)
           }
         </HorizontalList>
       </Section>

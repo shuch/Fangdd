@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
 
 import color from '../../constant/color';
+import Tag from './Tag';
 
 class HorizontalItem extends Component {
   // props = {
@@ -21,6 +22,7 @@ class HorizontalItem extends Component {
             <Text style={styles.priceVal}>{price}</Text>万
           </Text>
         </View>
+        <Tag type={this.props.type} />
       </View>
     );
   }
@@ -29,7 +31,7 @@ class HorizontalItem extends Component {
 const styles = StyleSheet.create({
   container: {
     width: 156,
-    marginRight: 15,
+    marginLeft: 15,
   },
   houseImg: {
     width: 156,

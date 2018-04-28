@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 
 import Navigator from './screen/Navigator';
 
-
+// type Props = {};
 export default class App extends Component {
   render() {
     return <Navigator />;

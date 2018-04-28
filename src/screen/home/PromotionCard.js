@@ -3,6 +3,7 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 
 class PromotionCard extends Component {
   render() {
+    console.log('PromotionCard');
     return (
       <View style={styles.card}>
         <Text style={styles.cardTitle}>4月开盘</Text>
