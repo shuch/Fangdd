@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet }  from 'react-native';
 
 import HorizontalList from '../../component/common/HorizontalList';
-import Card from './PromotionCard';
+import Card from './CatageryCard';
+import catageoyList from '../../data/home_catagery';
 
-class Promotion extends Component {
+class Catagery extends Component {
   render() {
-    const cardList = [1, 2, 3];
     return (
       <HorizontalList>
         {
-          cardList.map(item => <Card key={item} />)
+          catageoyList.map(item => <Card key={item.title} data={item} />)
         }
       </HorizontalList>
     );
   }
 }
 
-export default Promotion;
+export default Catagery;

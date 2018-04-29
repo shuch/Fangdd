@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation';
 
-import TabBarItem from '../widget/TabBarItem';
+import TabBarItem from './TabBarItem';
 import HomeScreen from './home/HomeScreen';
 import ToutiaoScreen from './toutiao/ToutiaoScreen';
 import MessageScreen from './message/MessageScreen';
@@ -20,7 +20,7 @@ const Tab = TabNavigator(
           <TabBarItem
             tintColor={tintColor}
             focused={focused}
-            normalImage={require('../img/tabbar/home.png')}
+            normalImage={require('../img/tabbar/home.jpg')}
             selectedImage={require('../img/tabbar/home_active.png')}
           />
         )
@@ -34,8 +34,8 @@ const Tab = TabNavigator(
           <TabBarItem
             tintColor={tintColor}
             focused={focused}
-            normalImage={require('../img/tabbar/home.png')}
-            selectedImage={require('../img/tabbar/home_active.png')}
+            normalImage={require('../img/tabbar/toutiao.png')}
+            selectedImage={require('../img/tabbar/toutiao_active.jpg')}
           />
         )
       }), 
@@ -48,8 +48,8 @@ const Tab = TabNavigator(
           <TabBarItem
             tintColor={tintColor}
             focused={focused}
-            normalImage={require('../img/tabbar/home.png')}
-            selectedImage={require('../img/tabbar/home_active.png')}
+            normalImage={require('../img/tabbar/message.png')}
+            selectedImage={require('../img/tabbar/message_active.jpg')}
           />
         )
       }), 
@@ -62,8 +62,8 @@ const Tab = TabNavigator(
           <TabBarItem
             tintColor={tintColor}
             focused={focused}
-            normalImage={require('../img/tabbar/home.png')}
-            selectedImage={require('../img/tabbar/home_active.png')}
+            normalImage={require('../img/tabbar/find.png')}
+            selectedImage={require('../img/tabbar/find_active.png')}
           />
         )
       }), 
@@ -77,7 +77,7 @@ const Tab = TabNavigator(
             tintColor={tintColor}
             focused={focused}
             normalImage={require('../img/tabbar/mine.png')}
-            selectedImage={require('../img/tabbar/mine_active.png')}
+            selectedImage={require('../img/tabbar/mine_active.jpg')}
           />
         )
       }), 

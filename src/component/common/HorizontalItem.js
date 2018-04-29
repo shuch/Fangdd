@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
 
-import color from '../../constant/color';
+import color from '../../common/color';
 import Tag from './Tag';
 
 class HorizontalItem extends Component {

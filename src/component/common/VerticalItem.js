@@ -27,7 +27,7 @@ class VerticalItem extends Component {
             <Text style={styles.metroText}>七号线行知路(距离677米)</Text>
           </View>
           <View style={[styles.ai, styles.gap10]}>
-            <Text style={styles.aiText}>“符合您找房意向的房源”</Text>
+            <Text style={styles.aiText}>"符合您找房意向的房源"</Text>
           </View>
         </View>
       </View>

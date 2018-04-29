@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 
-import screen from '../../common/screen';
 import HomeMenu from './HomeMenu';
-import Promotion from './Promotion';
+import Catagery from './Catagery';
 import HotLoupan from './HotLoupan';
 import HotESF from './HotESF';
 import SwipeBanner from './SwipeBanner';
@@ -43,7 +42,7 @@ class HomeScreen extends Component {
     return (
       <View style={styles.header}>
         <HomeMenu />
-        <Promotion />
+        <Catagery />
         <HotLoupan />
         <HotESF />
         <SwipeBanner />

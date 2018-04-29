@@ -6,7 +6,7 @@
 
 import React, { Component } from 'react';
 
-import Navigator from './screen/Navigator';
+import Navigator from './page/Navigator';
 
 // type Props = {};
 export default class App extends Component {
