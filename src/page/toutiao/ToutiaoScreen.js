@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, WebView } from 'react-native';
 
 
 class ToutiaoScreen extends Component {
+
+  static navigationOptions = {
+    title: '房市头条',
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Toutiao Screen</Text>
-      </View>
+      <WebView
+        source={{ uri: 'https://m.fangdd.com/sh/news/t-list.html?fromType=fddapp&fromShare=wct' }}
+        // style={}
+      />
     );
   }
 }

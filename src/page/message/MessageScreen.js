@@ -1,11 +1,27 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, FlatList, StyleSheet } from 'react-native';
+
+import color from '../../common/color';
+import MessageItem from '../../component/message/MessageItem';
 
 class MessageScreen extends Component {
+
+  static navigationOptions = {
+    title: '我的消息',
+  }
+
   render() {
+    const messageList = [
+      { key: '1' },
+      { key: '2' },
+      { key: '3' },
+    ];
     return (
       <View style={styles.container}>
-        <Text>Message Screen</Text>
+        <FlatList
+          data={messageList}
+          renderItem={({item}) => <MessageItem data={item} key={item.key} /> }
+        />
       </View>
     );
   }
@@ -13,10 +29,7 @@ class MessageScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'lightblue',
+    backgroundColor: color.containerBackground,
   },
 });
 

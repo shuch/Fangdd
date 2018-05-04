@@ -104,5 +104,10 @@ export default Navigator = StackNavigator(
   },
   {
     initialRouteName: 'Tab',
+    navigationOptions: {
+      // headerStyle: {
+        // backgroundColor: '#fff',
+      // },
+    },
   }
 );

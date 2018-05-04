@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, Image, StyleSheet, FlatList } from 'react-native';
 
 import HomeMenu from './HomeMenu';
 import Catagery from './Catagery';
@@ -12,31 +12,32 @@ import VerticalItem from '../../component/common/VerticalItem';
 
 class HomeScreen extends Component {
   static navigationOptions = () => ({
-      headerTitle: (
-        <TouchableOpacity style={styles.searchBar}>
-          <View style={styles.location}>
-            <Text style={styles.cityName}>上海</Text>
-            <Image style={styles.downIcon} source={require('../../img/home/down_icon.png')}/>
-          </View>
-          <Image style={styles.searchIcon} source={require('../../img/home/search_icon.png')} />
-          <Text style={styles.placeholder}>请输入小区名、楼盘、商圈名</Text>
-        </TouchableOpacity>
-      ),
-      headerTitleStyle: {
-        // color: 'red',
-      },
-      headerStyle: {
-        // backgroundColor: 'green',
-        // margin: 10,
-        // paddingTop: 35,
-        // paddingBottom: 10,
-        height: 69,
-        borderWidth: 0,
-        // flexDirection: 'column',
-        // alignItems: 'flex-start',
-        // justifyContent: 'flex-start',
-        // paddingVertical: 15,
-      },
+    headerTitle: (
+      <View style={styles.searchBar}>
+        <View style={styles.location}>
+          <Text style={styles.cityName}>上海</Text>
+          <Image style={styles.downIcon} source={require('../../img/home/down_icon.png')}/>
+        </View>
+        <Image style={styles.searchIcon} source={require('../../img/home/search_icon.png')} />
+        <Text style={styles.placeholder}>请输入小区名、楼盘、商圈名</Text>
+      </View>
+    ),
+    headerTitleStyle: {
+      color: 'red',
+      marginTop: 20,
+    },
+    headerStyle: {
+      backgroundColor: '#fff',
+      // margin: 10,
+      // paddingTop: 35,
+      // paddingBottom: 10,
+      height: 69,
+      borderWidth: 0,
+      // flexDirection: 'column',
+      // alignItems: 'flex-start',
+      // justifyContent: 'flex-start',
+      // paddingVertical: 15,
+    },
   })
   renderHeader = () => {
     return (

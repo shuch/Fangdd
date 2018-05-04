@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 
 class PromotionCard extends Component {
   render() {
     const { title, subTitle, link, img } = this.props.data;
     return (
-      <TouchableOpacity>
-        <View style={styles.card}>
-          <Text style={styles.cardTitle}>{ title }</Text>
-          <Text style={styles.cardSubTitle}>{ subTitle }</Text>
-          <Image style={styles.cardImage} source={ img } />
-        </View>
-      </TouchableOpacity>
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>{ title }</Text>
+        <Text style={styles.cardSubTitle}>{ subTitle }</Text>
+        <Image style={styles.cardImage} source={ img } />
+      </View>
     );
   }
 }
