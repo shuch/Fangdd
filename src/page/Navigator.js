@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+// import { View, Text, StyleSheet } from 'react-native';
 import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation';
 
 import TabBarItem from './TabBarItem';
@@ -20,7 +20,7 @@ const Tab = TabNavigator(
           <TabBarItem
             tintColor={tintColor}
             focused={focused}
-            normalImage={require('../img/tabbar/home.jpg')}
+            normalImage={require('../img/tabbar/home.png')}
             selectedImage={require('../img/tabbar/home_active.png')}
           />
         )
@@ -35,7 +35,7 @@ const Tab = TabNavigator(
             tintColor={tintColor}
             focused={focused}
             normalImage={require('../img/tabbar/toutiao.png')}
-            selectedImage={require('../img/tabbar/toutiao_active.jpg')}
+            selectedImage={require('../img/tabbar/toutiao_active.png')}
           />
         )
       }), 
@@ -49,7 +49,7 @@ const Tab = TabNavigator(
             tintColor={tintColor}
             focused={focused}
             normalImage={require('../img/tabbar/message.png')}
-            selectedImage={require('../img/tabbar/message_active.jpg')}
+            selectedImage={require('../img/tabbar/message_active.png')}
           />
         )
       }), 
@@ -77,7 +77,7 @@ const Tab = TabNavigator(
             tintColor={tintColor}
             focused={focused}
             normalImage={require('../img/tabbar/mine.png')}
-            selectedImage={require('../img/tabbar/mine_active.jpg')}
+            selectedImage={require('../img/tabbar/mine_active.png')}
           />
         )
       }), 
@@ -85,8 +85,8 @@ const Tab = TabNavigator(
   },
   {
     tabBarOptions: {
-      activeTintColor: '#ff611b',
-      inactiveTintColor: 'grey',
+      activeTintColor: '#333',
+      inactiveTintColor: '#333',
     },
     tabBarComponent: TabBarBottom,
     tabBarPosition: 'bottom',
