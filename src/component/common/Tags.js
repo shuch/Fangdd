@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
 class Tags extends Component {
-  render() {
-    const list = ['满五年', '靠近地铁', '电梯房'];
+  slice(arr) {
+    return arr.slice(0, 4);
+  }
+  render({ data } = this.props) {
     return (
       <View style={styles.list}>
         {
-          list.map(item => <Text key={item} style={styles.text}>{ item }</Text>)
+          this.slice(data).map((item, index) => <Text key={item} style={styles.text}>{ item }</Text>)
         }
       </View>
     );

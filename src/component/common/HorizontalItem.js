@@ -11,15 +11,43 @@ class HorizontalItem extends Component {
   //   // price: '488-709',
   // }
   render() {
-    const { houseName, area, price } = this.props.data;
+    const {
+      area,
+      name,
+      sectionName,
+      cellName,
+      areaRank,
+      price,
+      coverImage,
+      minTotalPrice,
+      maxTotalPrice, 
+    } = this.props.data;
     return (
       <View style={styles.container}>
-        <Image source={require('../../img/home/house.jpg')} style={styles.houseImg}/>
-        <Text style={styles.houseName}>{houseName}</Text>
+        <Image source={{ uri: coverImage }} style={styles.houseImg}/>
+        <Text style={styles.houseName} numberOfLines={1}>
+          { this.props.type === 'xf' ? name : `${sectionName} ${cellName}` }
+        </Text>
         <View style={styles.areaPrice}>
-          <Text style={styles.area}>{area}㎡</Text>
+          <Text style={styles.area}>
+          { this.props.type === 'xf' ? areaRank : `${name} ${area}㎡` }
+          </Text>
           <Text style={styles.price}>
-            <Text style={styles.priceVal}>{price}</Text>万
+            {
+              this.props.type === 'xf' ? (
+                minTotalPrice && maxTotalPrice ? [
+                  <Text style={styles.priceVal} key={0}>
+                    {Math.floor(minTotalPrice / 10000)}-{Math.floor(maxTotalPrice / 10000)}
+                  </Text>,
+                  <Text key={1}>万</Text>
+                  ] : "售价待定"
+              ) : ([
+                <Text style={styles.priceVal} key={0}>
+                  {Math.ceil(price * area / 10000)}
+                </Text>,
+                <Text key={1}>万</Text> 
+              ])
+            }
           </Text>
         </View>
         <Tag type={this.props.type} />
@@ -41,11 +69,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     marginTop: 8,
+    flex: 1,
   },
   areaPrice: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-end',
     marginTop: 1,
+    height: 21,
   },
   area: {
     flex: 1,

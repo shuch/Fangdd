@@ -2,25 +2,40 @@ import React, { Component } from 'react';
 import { View, Image, Text, StyleSheet } from 'react-native';
 
 import Tags from './Tags';
+import screen from '../../common/screen';
 
 class VerticalItem extends Component {
-  render() {
+  render({ data } = this.props) {
+    const {
+      coverImage,
+      cellName,
+      shi,
+      name,
+      area,
+      price,
+      districtName,
+      sectionName,
+      tags,
+    } = data;
     return (
       <View style={styles.container}>
-        <Image source={require('../../img/home/house.jpg')} style={styles.houseImg}/>
+        <Image source={{ uri: coverImage }} style={styles.houseImg}/>
         <View style={styles.houseInfo}>
-          <Text style={styles.title} numberOfLines={1}>远景嘉园二期 3居 南北通透 电梯房靠近地铁</Text>
+          <Text style={styles.title} numberOfLines={1}>{cellName} {shi}居</Text>
           <View style={[styles.section, styles.gap10]}>
-            <Text style={styles.areaText}>3室2厅2卫 123㎡</Text>
-            <Text style={styles.totalPrice}>638</Text>
+            <Text style={styles.areaText}>{name} {area}㎡</Text>
+            <Text style={styles.totalPrice}>
+              {/* price is much high, so floor it... */}
+              {Math.floor(area * price / 10000)}
+            </Text>
             <Text style={styles.priceUnit}>万</Text>
           </View>
           <View style={[styles.section, styles.row]}>
-            <Text style={styles.block}>宝山 大华</Text>
-            <Text style={styles.price}>51870元/㎡</Text>
+            <Text style={styles.block}>{districtName} {sectionName}</Text>
+            <Text style={styles.price}>{price}元/㎡</Text>
           </View>
           <View style={styles.row}>
-            <Tags data={[]}/>
+            <Tags data={tags}/>
           </View>
           <View style={[styles.metro, styles.gap10]}>
             <Image source={require('../../img/home/ic_metro.png')} style={styles.metroIcon}/>
@@ -42,7 +57,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderColor: '#eee',
     borderStyle: 'solid',
-    borderBottomWidth: 1,
+    borderBottomWidth: screen.onePixel,
   },
   houseImg: {
     width: 100,

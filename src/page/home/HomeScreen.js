@@ -8,19 +8,21 @@ import HotESF from './HotESF';
 import SwipeBanner from './SwipeBanner';
 import HotAgents from './HotAgents';
 import RecommendList from './RecommendList';
-import VerticalItem from '../../component/common/VerticalItem';
+import VerticalItem from '../../component/common/VerticalItem'
+import HomeTitle from '../../component/home/HomeTitle';
+import Api from '../../data/Api';
 
 class HomeScreen extends Component {
+  state = {
+    hotLoupan: [],
+    hotEsf: [],
+    homeRecommend: [],
+    page: 1,
+    homeRecommendLimited: 30,
+  }
   static navigationOptions = () => ({
     headerTitle: (
-      <View style={styles.searchBar}>
-        <View style={styles.location}>
-          <Text style={styles.cityName}>上海</Text>
-          <Image style={styles.downIcon} source={require('../../img/home/down_icon.png')}/>
-        </View>
-        <Image style={styles.searchIcon} source={require('../../img/home/search_icon.png')} />
-        <Text style={styles.placeholder}>请输入小区名、楼盘、商圈名</Text>
-      </View>
+      <HomeTitle />
     ),
     headerTitleStyle: {
       color: 'red',
@@ -28,24 +30,52 @@ class HomeScreen extends Component {
     },
     headerStyle: {
       backgroundColor: '#fff',
-      // margin: 10,
-      // paddingTop: 35,
-      // paddingBottom: 10,
       height: 69,
-      borderWidth: 0,
-      // flexDirection: 'column',
-      // alignItems: 'flex-start',
-      // justifyContent: 'flex-start',
-      // paddingVertical: 15,
+      borderBottomWidth: 0,
     },
   })
+  componentWillMount() {
+    this.fetchData();
+  }
+  fetchData = () => {
+    this.fetchHotLoupan();
+    this.fetchHotEsf();
+    this.fetchHomeRecommend();
+  }
+  fetchHotLoupan = async () => {
+    const response = await fetch(Api.hotLoupan);
+    const json = await response.json();
+    this.setState({
+      hotLoupan: json.data,
+    });
+  }
+  fetchHotEsf = async () => {
+    const response = await fetch(Api.hotEsf);
+    const json = await response.json();
+    this.setState({
+      hotEsf: json.data,
+    });
+  }
+  fetchHomeRecommend = async () => {
+    const response =  await fetch(`${Api.homeRecommend}&pageNo=${this.state.page}`);
+    const json = await response.json();
+    this.setState({
+      homeRecommend: json.data,
+    });
+  }
+  reachBottom = () => {
+    // if (this.state.homeRecommend.length < this.state.homeRecommendLimited) {
+    //   console.log(this.state.homeRecommend);
+    //   this.setState(state => ({ page: state.page + 1 }), () => this.fetchHomeRecommend());
+    // }
+  }
   renderHeader = () => {
     return (
       <View style={styles.header}>
         <HomeMenu />
         <Catagery />
-        <HotLoupan />
-        <HotESF />
+        <HotLoupan data={this.state.hotLoupan} />
+        <HotESF data={this.state.hotEsf} />
         <SwipeBanner />
         {/* <HotAgents /> */}
         <RecommendList />
@@ -53,17 +83,14 @@ class HomeScreen extends Component {
     );
   }
   render() {
-    const recommendList = [
-      { key: '1' },
-      { key: '2' },
-      { key: '3' },
-    ]
     return (
       <View style={styles.container}>
         <FlatList
-          data={recommendList}
-          renderItem={({item}) => <VerticalItem key={item.key}/> }
+          data={this.state.homeRecommend}
+          keyExtractor={(item) => String(item.esf.id) }
+          renderItem={({item}) => <VerticalItem data={item.esf}/> }
           ListHeaderComponent={this.renderHeader}
+          onEndReached={this.reachBottom}
         />
       </View>
     );
@@ -72,59 +99,11 @@ class HomeScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
     backgroundColor: '#FAFAFA',
-  },
-  location: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderRightWidth: 1,
-    borderColor: '#f8f8f8',
-    borderStyle: 'solid',
-    paddingHorizontal: 8,
-  },
-  cityName: {
-    fontSize: 12,
-  },
-  searchBar: {
-    flex: 1,
-    flexDirection: 'row',
-    backgroundColor: '#fff',
-    // borderWidth: 1,
-    // borderColor: '#C6C6C6',
-    // borderStyle: 'solid',
-    borderRadius: 4,
-    marginHorizontal: 15,
-    height: 44,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowOpacity:0.14, 
-    shadowRadius: 6,
-  },
-  downIcon: {
-    width: 20,
-    height: 20,
-  },
-  searchIcon: {
-    width: 12,
-    height: 12,
-    marginHorizontal: 10,
-  },
-  placeholder: {
-    color: 'grey',
-    fontSize: 14,
   },
   header: {
     margin: 0,
-    // alignItems: 'flex-start',
-  }
-  
+  },
 });
 
 export default HomeScreen;
