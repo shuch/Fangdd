@@ -59,15 +59,16 @@ class HomeScreen extends Component {
   fetchHomeRecommend = async () => {
     const response =  await fetch(`${Api.homeRecommend}&pageNo=${this.state.page}`);
     const json = await response.json();
-    this.setState({
-      homeRecommend: json.data,
-    });
+    this.setState(state => ({
+      homeRecommend: state.homeRecommend.concat(json.data),
+    }));
   }
-  reachBottom = () => {
-    // if (this.state.homeRecommend.length < this.state.homeRecommendLimited) {
-    //   console.log(this.state.homeRecommend);
-    //   this.setState(state => ({ page: state.page + 1 }), () => this.fetchHomeRecommend());
-    // }
+  reachBottom = ({ distanceFromEnd }) => {
+    console.log('reachbottom', distanceFromEnd);
+    if (this.state.homeRecommend.length < this.state.homeRecommendLimited) {
+      console.log(this.state.homeRecommend);
+      this.setState(state => ({ page: state.page + 1 }), () => this.fetchHomeRecommend());
+    }
   }
   renderHeader = () => {
     return (
@@ -91,6 +92,7 @@ class HomeScreen extends Component {
           renderItem={({item}) => <VerticalItem data={item.esf}/> }
           ListHeaderComponent={this.renderHeader}
           onEndReached={this.reachBottom}
+          onEndReachedThreshold={0.5}
         />
       </View>
     );
