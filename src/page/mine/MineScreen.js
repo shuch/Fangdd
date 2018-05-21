@@ -34,7 +34,7 @@ class MineScreen extends Component {
       <View style={styles.container}>
         <View style={styles.recordList}>
           <View style={styles.record}>
-            <Image source={require('../../img/tabbar/message.png')} style={styles.recordIcon} />
+            <Image source={require('../../img/mine/follow.png')} style={styles.recordIcon} />
             <Text style={styles.recordTitle}>我的关注</Text>
           </View>
           <View style={styles.record}>
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     // borderColor: '#000',
   },
   recordIcon: {
-    width: 20,
+    width: 22,
     height: 20,
   },
   recordTitle: {

@@ -18,6 +18,7 @@ class HomeScreen extends Component {
     hotEsf: [],
     homeRecommend: [],
     page: 1,
+    // home only fetch 30 without total
     homeRecommendLimited: 30,
   }
   static navigationOptions = () => ({
